@@ -1,6 +1,6 @@
 import nltk
 from rouge import Rouge
-from ThirdParty.rouge.rouge.rouge_score import *
+from utils.ThirdParty.ROUGE.rouge.rouge_score import *
 from utils.tools import download_nltk
 
 download_nltk()

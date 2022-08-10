@@ -42,3 +42,4 @@ typing-extensions==3.7.4.3
 urllib3==1.26.3
 wasabi==0.8.2
 zipp==3.4.0
+rouge==1.0.1
