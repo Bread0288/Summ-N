@@ -14,12 +14,12 @@ class SummaryGenerator(object):
         self.fine_grained = fine_grained
         self.test_mode = test_mode
 
-        self.bart = BARTModel.from_pretrained(
-            self.stage_cfg.trainer_output_folder,
-            checkpoint_file='checkpoints/checkpoint_best.pt',
-            data_name_or_path="./bin"
-        )
-
+        # self.bart = BARTModel.from_pretrained(
+        #     self.stage_cfg.trainer_output_folder,
+        #     checkpoint_file='checkpoints/checkpoint_best.pt',
+        #     data_name_or_path="./bin"
+        # )
+        self.bart = torch.hub.load('pytorch/fairseq', 'bart.large')
         self.bart.cuda()
         self.bart.eval()
         self.bart.half()

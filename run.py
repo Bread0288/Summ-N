@@ -18,7 +18,9 @@ AnyROUGE.py -> evaluate the final results
 
 """
 import os
-
+'''
+ArgumentParser : 커맨드라인의 인수를 받아 처리하는 라이브러리
+'''
 from argparse_dataclass import ArgumentParser
 
 from utils.training_args import TrainArgs
@@ -35,6 +37,7 @@ from models.gen_summary.coarse_seg import CoarseSegCombiner
 if __name__ == '__main__':
     # Parse all arguments
     parser = ArgumentParser(TrainArgs)
+    # parser.parse_args() : 커맨드라인으로 들어온 인수를 분석
     training_args = parser.parse_args()
     args = Configure.Get(training_args.cfg)
     args.train = training_args # combine shell & file configs

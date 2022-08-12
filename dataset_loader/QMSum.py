@@ -2,8 +2,8 @@ import gzip
 import os
 import json
 
-from SummN.utils.dataset import *
-from SummN.dataset_loader.base_loader import LoaderBase
+from utils.dataset import *
+from dataset_loader.base_loader import LoaderBase
 
 
 class Loader(LoaderBase):
@@ -14,7 +14,7 @@ class Loader(LoaderBase):
         self.query = {'train':[], 'val':[],'test':[]}
 
     def load(self):
-        raise NotImplementedError()
+        # raise NotImplementedError()
         for data_type in ['train', 'val', 'test']:
             data_path = os.path.join(self.cfg.train.dataset_path, f"jsonl/{data_type}.jsonl")
 

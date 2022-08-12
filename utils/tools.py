@@ -4,6 +4,7 @@ import sys
 
 
 def get_dataloader(loader):
+    # format : {} 안에 인자가 들어감.
     Loader = importlib.import_module('dataset_loader.{}'.format(loader)).Loader
     return Loader
 
