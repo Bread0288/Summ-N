@@ -3,7 +3,7 @@ from tqdm import tqdm
 import os
 
 import torch
-from fairseq.models.bart import BARTModel
+#from fairseq.models.bart import BARTModel
 from utils.dataset import write_list_asline
 
 class SummaryGenerator(object):
@@ -19,7 +19,7 @@ class SummaryGenerator(object):
         #     checkpoint_file='checkpoints/checkpoint_best.pt',
         #     data_name_or_path="./bin"
         # )
-        self.bart = torch.hub.load('pytorch/fairseq', 'bart.large')
+        self.bart = torch.load(cfg.train.model_path)
         self.bart.cuda()
         self.bart.eval()
         self.bart.half()

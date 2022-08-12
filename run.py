@@ -37,7 +37,7 @@ from models.gen_summary.coarse_seg import CoarseSegCombiner
 if __name__ == '__main__':
     # Parse all arguments
     parser = ArgumentParser(TrainArgs)
-    # parser.parse_args() : 커맨드라인으로 들어온 인수를 분석
+    # parser.parse_args() : 커맨드라인으로 들어온 인수 분석
     training_args = parser.parse_args()
     args = Configure.Get(training_args.cfg)
     args.train = training_args # combine shell & file configs
@@ -45,7 +45,10 @@ if __name__ == '__main__':
 
     # Load dataset using dataset loader
     dataset_loader = get_dataloader(args.dataset.loader_name)(args)
-    source_data, target_data = dataset_loader.load()
+    if 'QMSum' in args.train.cfg:
+        source_data, target_data, query_data = dataset_loader.load()
+    else:
+        source_data, target_data = dataset_loader.load()
     assertion_statis(source_data, target_data, f"Finish loading stage {args.cur_stage} dataset!")
     if args.train.save_intermediate is True:
         dataset_loader.save()
